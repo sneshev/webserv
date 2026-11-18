@@ -9,8 +9,8 @@
 #include <map>
 
 struct ListenEndpoint {
-	std::string	host; //interface
-	uint16_t	port;
+	std::string		host; //interface
+	std::uint16_t	port;
 };
 
 class ServerConfig {
@@ -18,17 +18,18 @@ class ServerConfig {
 		std::vector<ListenEndpoint> _endpoints;
 		std::vector<LocationConfig>	_locations;
 
-		std::string _root;
-		size_t		_clientMaxBodySize;
+		std::string	_root;
+		std::size_t	_clientMaxBodySize;
 
-		std::map<int, std::string>	_errorPages; // number and path to file
+		std::map<std::uint16_t, std::string>	_errorPages; // number and path to file
 
 	public:
-		const std::vector<ListenEndpoint>&	getEndpoints() const;
 		const std::vector<LocationConfig>&	getLocations() const;
-		const std::map<int, std::string>&	getErrorPages() const;
+		const std::vector<ListenEndpoint>&	getEndpoints() const;
 		const std::string&					getRoot() const;
-		size_t								getClientMaxBodySize() const;
+		std::size_t							getClientMaxBodySize() const;
+		
+		const std::map<std::uint16_t, std::string>&	getErrorPages() const;
 
 };
 
