@@ -1,27 +1,24 @@
 /* ************************************************************************** */
 /*                                                                            */
-/*                                                        ::::::::            */
-/*   HttpResponse.hpp                                   :+:    :+:            */
-/*                                                     +:+                    */
-/*   By: yaepark <yaepark@student.codam.nl>           +#+                     */
-/*                                                   +#+                      */
-/*   Created: 2026/11/16 16:18:25 by yaepark       #+#    #+#                 */
-/*   Updated: 2026/11/16 16:57:50 by yaepark       ########   odam.nl         */
+/*                                                        :::      ::::::::   */
+/*   HttpResponse.hpp                                   :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: yaepark <yaepark@student.codam.nl>         +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2026/11/16 16:18:25 by yaepark           #+#    #+#             */
+/*   Updated: 2026/11/18 14:22:38 by yaepark          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #pragma once
 
 #include <iostream>
+#include <string>
+#include <map>
+#include "HttpResponseBuilder.hpp"
 
-class HttpResponse
+class HttpResponse : public HttpResponseBuilder
 {
-	private:
-	std::string complete_request_;
-	std::string status_line_;
-	std::string response_headers_;
-	std::string response_body_;
-
 	public:
 	//constructor
 	HttpResponse();
@@ -33,4 +30,10 @@ class HttpResponse
 
 	//getters
 	std::string& getCompleteResponse();
+	bool isResponseComplete();
+	bool isResponseEmpty();
+
+
+	private:
+
 };
