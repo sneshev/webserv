@@ -1,6 +1,7 @@
 #pragma once
 
 #include "LocationConfig.hpp"
+#include "Config.hpp"
 
 #include <cstddef>
 #include <cstdint>
@@ -13,23 +14,27 @@ struct ListenEndpoint {
 	std::uint16_t	port;
 };
 
-class ServerConfig {
+class ServerConfig : public Config {
 	private:
-		std::vector<ListenEndpoint> _endpoints;
 		std::vector<LocationConfig>	_locations;
-
-		std::string	_root;
-		std::size_t	_clientMaxBodySize;
+		std::vector<ListenEndpoint> _endpoints;
 
 		std::map<std::uint16_t, std::string>	_errorPages; // number and path to file
 
 	public:
-		const std::vector<LocationConfig>&	getLocations() const;
-		const std::vector<ListenEndpoint>&	getEndpoints() const;
-		const std::string&					getRoot() const;
-		std::size_t							getClientMaxBodySize() const;
-		
-		const std::map<std::uint16_t, std::string>&	getErrorPages() const;
+		ServerConfig();
+		ServerConfig(const ServerConfig& other);
+		ServerConfig& operator=(const ServerConfig& other);
+		~ServerConfig();
 
+		const std::vector<LocationConfig>&			getLocations() const;
+		const std::vector<ListenEndpoint>&			getEndpoints() const;
+		const std::map<std::uint16_t, std::string>&	getErrorPages() const;
+		
+		const LocationConfig*						findLocation(const std::string& uri) const;
+
+		void	addEndpoint(const ListenEndpoint& endpoint);
+		void	addLocation(const LocationConfig& location);
+		void	setErrorPage(std::uint16_t code, const std::string& path);
 };
 
