@@ -6,7 +6,7 @@
 /*   By: yaepark <yaepark@student.codam.nl>           +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2026/11/16 16:18:25 by yaepark       #+#    #+#                 */
-/*   Updated: 2026/11/20 15:55:03 by yaepark       ########   odam.nl         */
+/*   Updated: 2026/11/20 17:42:49 by yaepark       ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,7 +28,7 @@ class HttpResponse
 	~HttpResponse();
 
 	//method functions
-	bool build(); //returns is_built_
+	bool build(); //returns _isBuilt
 
 	//status checkers
 	bool isValid();
@@ -43,13 +43,13 @@ class HttpResponse
 	//ADD setters
 
 	private:
-	std::string http_version_;
-	std::string status_code_;
-	std::string reason_phrase_;
-	std::map<std::string, std::string> headers_;
-	std::string body_;
-	std::string complete_reponse_;
+	std::string httpVersion;
+	std::string statusCode;
+	std::string reasonPhrase;
+	std::map<std::string, std::string> headers;
+	std::string body;
+	std::string completeReponse;
 
-	bool is_valid_; //are enough fields filled in to build a valid response
-	bool is_built_; //reponse is successfully built
+	bool _isValid; //are enough fields filled in to build a valid response
+	bool _isBuilt; //reponse is successfully built
 };

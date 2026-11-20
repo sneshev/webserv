@@ -4,10 +4,6 @@
 # include <iostream>
 # include <string>
 
-# include "HttpRequest.hpp"
-# include "HttpResponse.hpp"
-
-
 //add more status codes https://www.rfc-editor.org/info/rfc9112/#section-3
 enum e_Status_Code
 {
