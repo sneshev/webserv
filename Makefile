@@ -6,9 +6,7 @@ SRCS = $(wildcard src/*.cpp)
 OBJS = $(SRCS:src/%.cpp=obj/%.o)
 DEPS = $(OBJS:.o=.d)
 
-
 all: $(NAME)
-
 
 $(NAME): $(OBJS)
 	c++ $(FLAGS) $(OBJS) -o $(NAME)
@@ -18,7 +16,6 @@ obj/%.o: src/%.cpp | obj
 
 obj:
 	@mkdir -p obj
-
 
 clean:
 	rm -rf obj
