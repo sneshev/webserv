@@ -54,7 +54,11 @@ void ServerConfig::print() {
 	std::cout << "root: " << _root << "\n";
 	std::cout << "index: " << (_index.empty() ? "none" : _index) << "\n";
 	std::cout << "client max body size: " << _clientMaxBodySize << "\n";
-	std::cout << "autoindex: " << _autoIndex << "\n";
+	std::cout << "autoindex: " << (_autoIndex ? "on" : "off") << "\n";
 	std::cout << "error pages: "; for (std::map<std::uint16_t, std::string>::iterator it = _errorPages.begin(); it != _errorPages.end(); ++it) {std::cout << it->first << " "; }; std::cout << "\n";
+	for (std::vector<LocationConfig>::iterator it = _locations.begin(); it != _locations.end(); ++it) {
+		std::cout << "\n";
+		it->print();
+	}
 	std::cout << std::endl;
 }

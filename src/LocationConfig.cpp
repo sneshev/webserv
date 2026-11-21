@@ -98,7 +98,7 @@ void LocationConfig::print() {
 		std::cout << "allowed methods: "; for (std::set<std::string>::iterator it = _allowedMethods.begin(); it != _allowedMethods.end(); ++it) {std::cout << *it << " "; }; std::cout << "\n";
 		std::cout << "root: " << _root << "\n";
 		std::cout << "index: " << (_index.empty() ? "none" : _index) << "\n";
-		std::cout << "autoindex: " << _autoIndex << "\n";
+		std::cout << "autoindex: " << (_autoIndex ? "on" : "off") << "\n";
 		std::cout << "client max body size: " << _clientMaxBodySize << "\n";
 		if (!_uploadPath.empty())
 			std::cout << "upload path: " << _uploadPath << "\n";
@@ -107,5 +107,4 @@ void LocationConfig::print() {
 		std::cout << "redirect code: " << _redirectCode << "\n";
 		std::cout << "redirect target: " << _redirectTarget << "\n";
 	}
-	std::cout << std::endl;
 }
