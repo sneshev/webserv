@@ -4,6 +4,11 @@ LocationConfig::LocationConfig()
 	: Config(), _redirectCode(0) 
 { }
 
+LocationConfig::LocationConfig(const std::string& path)
+	: Config(), _path(path), _redirectCode(0) 
+{ }
+
+
 LocationConfig::LocationConfig(const Config& defaults)
 	: Config(defaults), _redirectCode(0)
 { }
@@ -85,4 +90,22 @@ void LocationConfig::setRedirectCode(std::uint16_t code) {
 
 void LocationConfig::setRedirectTarget(const std::string& target) {
 	_redirectTarget = target;
+}
+
+void LocationConfig::print() {
+	std::cout << "Printing Location \"" << _path << "\"\n";
+	if (!_redirectCode) {
+		std::cout << "allowed methods: "; for (std::set<std::string>::iterator it = _allowedMethods.begin(); it != _allowedMethods.end(); ++it) {std::cout << *it << " "; }; std::cout << "\n";
+		std::cout << "root: " << _root << "\n";
+		std::cout << "index: " << (_index.empty() ? "none" : _index) << "\n";
+		std::cout << "autoindex: " << _autoIndex << "\n";
+		std::cout << "client max body size: " << _clientMaxBodySize << "\n";
+		if (!_uploadPath.empty())
+			std::cout << "upload path: " << _uploadPath << "\n";
+	}
+	else {
+		std::cout << "redirect code: " << _redirectCode << "\n";
+		std::cout << "redirect target: " << _redirectTarget << "\n";
+	}
+	std::cout << std::endl;
 }

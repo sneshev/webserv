@@ -36,5 +36,7 @@ class ServerConfig : public Config {
 		void	addEndpoint(const ListenEndpoint& endpoint);
 		void	addLocation(const LocationConfig& location);
 		void	setErrorPage(std::uint16_t code, const std::string& path);
-};
+
+		void	print();
+	};
 

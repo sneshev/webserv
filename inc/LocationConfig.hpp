@@ -2,6 +2,7 @@
 
 #include "Config.hpp"
 
+#include <iostream>
 #include <cstdint>
 #include <string>
 #include <set>
@@ -19,6 +20,7 @@ class LocationConfig : public Config {
 		
 	public:
 		LocationConfig();
+		LocationConfig(const std::string& path);
 		LocationConfig(const Config& defaults);
 		LocationConfig(const LocationConfig& other);
 		LocationConfig& operator=(const LocationConfig& other);
@@ -41,4 +43,6 @@ class LocationConfig : public Config {
 		void	setUploadPath(const std::string& uploadPath);
 		void	setRedirectCode(std::uint16_t code);
 		void	setRedirectTarget(const std::string& target);
+
+		void print();
 };
