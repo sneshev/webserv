@@ -6,7 +6,7 @@
 /*   By: yaepark <yaepark@student.codam.nl>           +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2026/11/23 15:31:54 by yaepark       #+#    #+#                 */
-/*   Updated: 2026/11/23 16:38:17 by yaepark       ########   odam.nl         */
+/*   Updated: 2026/11/23 17:09:09 by yaepark       ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,11 +36,6 @@ enum eParseResult
 	PARSE_ERROR,
 	PARSE_INCOMPLETE,
 	PARSE_ALREADY_DONE
-};
-
-enum eBuildStatus
-{
-
 };
 
 using PairString = std::pair<std::string, std::string>;
