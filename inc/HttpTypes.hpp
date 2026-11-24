@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
-/*                                                        ::::::::            */
-/*   HttpTypes.hpp                                      :+:    :+:            */
-/*                                                     +:+                    */
-/*   By: yaepark <yaepark@student.codam.nl>           +#+                     */
-/*                                                   +#+                      */
-/*   Created: 2026/11/23 15:31:54 by yaepark       #+#    #+#                 */
-/*   Updated: 2026/11/23 17:09:09 by yaepark       ########   odam.nl         */
+/*                                                        :::      ::::::::   */
+/*   HttpTypes.hpp                                      :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: yaepark <yaepark@student.codam.nl>         +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2026/11/23 15:31:54 by yaepark           #+#    #+#             */
+/*   Updated: 2026/11/24 12:52:19 by yaepark          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,14 +28,6 @@ enum eStatusCode
 	STATUS_URI_TOO_LONG = 414,
 	STATUS_INTERNAL_SERVER_ERROR = 500,
 	STATUS_NOT_IMPLEMENTED = 501
-};
-
-enum eParseResult
-{
-	PARSE_SUCCESS,
-	PARSE_ERROR,
-	PARSE_INCOMPLETE,
-	PARSE_ALREADY_DONE
 };
 
 using PairString = std::pair<std::string, std::string>;

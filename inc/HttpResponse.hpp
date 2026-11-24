@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
-/*                                                        ::::::::            */
-/*   HttpResponse.hpp                                   :+:    :+:            */
-/*                                                     +:+                    */
-/*   By: yaepark <yaepark@student.codam.nl>           +#+                     */
-/*                                                   +#+                      */
-/*   Created: 2026/11/16 16:18:25 by yaepark       #+#    #+#                 */
-/*   Updated: 2026/11/23 17:07:08 by yaepark       ########   odam.nl         */
+/*                                                        :::      ::::::::   */
+/*   HttpResponse.hpp                                   :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: yaepark <yaepark@student.codam.nl>         +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2026/11/16 16:18:25 by yaepark           #+#    #+#             */
+/*   Updated: 2026/11/24 14:03:21 by yaepark          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,6 +19,17 @@
 
 class HttpResponse
 {
+	private:
+	std::string _httpVersion;
+	int _statusCode = 0;
+	std::string _reasonPhrase;
+	VectorPairString _headers;
+	std::string _body;
+
+	std::string _completeResponse;
+
+	void clearResponse();
+
 	public:
 	//constructor
 	HttpResponse();
@@ -33,7 +44,7 @@ class HttpResponse
 
 	//status checkers
 	bool isValid() const; //checks enough fields are (validly) filled in to build a response
-	bool isBuilt() const; //checks if _completeReponse is empty and
+	bool isBuilt() const; //checks if _completeReponse is not empty
 
 	//functions for headers
 	void addHeader(const PairString& header); //appends a header. allows dupes. clears _completeResponse
@@ -55,21 +66,10 @@ class HttpResponse
 	void setReasonPhrase(const std::string& phrase);//also clears _completeResponse
 	void setBody(const std::string& body);//also clears _completeResponse
 
-	private:
-	std::string _httpVersion;
-	int _statusCode = 0;
-	std::string _reasonPhrase;
-	VectorPairString _headers;
-	std::string _body;
-
-	std::string _completeResponse;
-
-	void clearResponse();
-
 };
 
 #endif
 /* (1) Clears _completeResponse.
-	If isValid()==true, builds reponse (including managing content-length)
+	If isValid()==true, builds reponse
 	Returns true if building is successful.
 	If building  is not successful, clears _completeResponse and returns false */
