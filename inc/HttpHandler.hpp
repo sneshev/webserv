@@ -34,12 +34,9 @@ class HttpHandler
 
 	~HttpHandler();
 
-	/* Handles request using one of the allowed methods: GET, POST, DELETE*/
-	void handleRequest(const HttpRequest& request, HttpResponse& response);
-	/* Adds default headers, set connection-related headers, ensure response headers
-	are consistent, and prepares the response for serialization*/
-	void prepareResponse(const HttpRequest& request, HttpResponse& response) const;
+	/* Handles request using one of the allowed methods: GET, POST, DELETE
+		Adds default headers, set connection-related headers, ensure response headers
+		are consistent, and builds the request and serializes it for sending*/
+	std::string handleRequest(const HttpRequest& request);
 };
-
 #endif
-
