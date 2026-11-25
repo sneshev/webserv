@@ -2,8 +2,11 @@ NAME = webserv
 
 FLAGS = -Wall -Wextra -Werror -g -MMD -MP
 
-SRCS = $(wildcard src/*.cpp)
-OBJS = $(SRCS:src/%.cpp=obj/%.o)
+SRCS =	$(wildcard src/*.cpp) \
+		$(wildcard src/http/*.cpp) \
+		$(wildcard src/utils/*.cpp)
+
+OBJS = $(patsubst src/%.cpp,obj/%.o,$(SRCS))
 DEPS = $(OBJS:.o=.d)
 
 
@@ -13,12 +16,9 @@ all: $(NAME)
 $(NAME): $(OBJS)
 	c++ $(FLAGS) $(OBJS) -o $(NAME)
 
-obj/%.o: src/%.cpp | obj
-	c++ $(FLAGS) -I inc -c $< -o $@
-
-obj:
-	@mkdir -p obj
-
+obj/%.o: src/%.cpp
+	@mkdir -p $(dir $@)
+	c++ $(FLAGS) -MMD -MP -I inc -c $< -o $@
 
 clean:
 	rm -rf obj

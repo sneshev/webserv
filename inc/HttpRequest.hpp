@@ -6,7 +6,7 @@
 /*   By: yaepark <yaepark@student.codam.nl>           +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2026/11/16 14:07:07 by yaepark       #+#    #+#                 */
-/*   Updated: 2026/11/25 14:08:01 by yaepark       ########   odam.nl         */
+/*   Updated: 2026/11/25 14:59:17 by yaepark       ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,7 @@
 # include <string>
 # include <cstddef>
 # include "HttpTypes.hpp"
+
 
 class HttpRequest
 {
@@ -40,16 +41,16 @@ class HttpRequest
 	void setRequestTarget(const std::string& requestTarget);
 	void setHttpVersion(const std::string& httpVersion);
 	void setHeaders(const VectorPairString& headers);
-	void addHeader(const PairString& header);
 	void setBody(const std::string& body);
 
 	const std::string& getMethod() const;
 	const std::string& getRequestTarget() const;
 	const std::string& getHttpVersion() const;
 	const VectorPairString& getAllHeaders() const;
-	VectorPairString searchHeaders(const std::string& headerName) const;
 	const std::string& getBody() const;
 
+	void addHeader(const PairString& singleHeader);
+	VectorPairString searchHeaders(const std::string& headerName) const;
 };
 
 #endif

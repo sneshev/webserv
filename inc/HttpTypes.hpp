@@ -6,7 +6,7 @@
 /*   By: yaepark <yaepark@student.codam.nl>           +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2026/11/23 15:31:54 by yaepark       #+#    #+#                 */
-/*   Updated: 2026/11/25 14:06:33 by yaepark       ########   odam.nl         */
+/*   Updated: 2026/11/25 14:38:05 by yaepark       ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,6 +31,6 @@ enum eStatusCode
 };
 
 using PairString = std::pair<std::string, std::string>;
-using VectorPairString = std::vector<PairString>;
+using VectorPairString = std::vector<std::pair<std::string, std::string>>;
 
 #endif
