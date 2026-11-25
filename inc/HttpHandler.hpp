@@ -20,26 +20,26 @@ class ServerConfig;
 class HttpHandler
 {
 	private:
-	//don't use these
+	//Do not use
 	HttpHandler();
+	//Do not use
 	HttpHandler(const HttpHandler& other);
+	//Do not use
 	HttpHandler& operator=(const HttpHandler& other);
 
 	const ServerConfig& _config;
 
 	public:
-	//constructor
 	HttpHandler(const ServerConfig& config);
 
-	//deconstructor
 	~HttpHandler();
 
-	//member functions
-	void handleRequest(const HttpRequest& request, HttpResponse& response); //(2)
-	void prepareResponse(const HttpRequest& request, HttpResponse& response) const; //(1)
+	/* Handles request using one of the allowed methods: GET, POST, DELETE*/
+	void handleRequest(const HttpRequest& request, HttpResponse& response);
+	/* Adds default headers, set connection-related headers, ensure response headers
+	are consistent, and prepares the response for serialization*/
+	void prepareResponse(const HttpRequest& request, HttpResponse& response) const;
 };
 
 #endif
-/* (1) Adds default headers, set connection-related headers, ensure response headers
-	are consistent, and prepares the response for serialization*/
-/* (2) handles request using one of the allowed methods*/
+

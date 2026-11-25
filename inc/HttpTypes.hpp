@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
-/*                                                        :::      ::::::::   */
-/*   HttpTypes.hpp                                      :+:      :+:    :+:   */
-/*                                                    +:+ +:+         +:+     */
-/*   By: yaepark <yaepark@student.codam.nl>         +#+  +:+       +#+        */
-/*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2026/11/23 15:31:54 by yaepark           #+#    #+#             */
-/*   Updated: 2026/11/24 12:52:19 by yaepark          ###   ########.fr       */
+/*                                                        ::::::::            */
+/*   HttpTypes.hpp                                      :+:    :+:            */
+/*                                                     +:+                    */
+/*   By: yaepark <yaepark@student.codam.nl>           +#+                     */
+/*                                                   +#+                      */
+/*   Created: 2026/11/23 15:31:54 by yaepark       #+#    #+#                 */
+/*   Updated: 2026/11/25 14:06:33 by yaepark       ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@
 # include <vector>
 # include <utility>
 
-//add more status codes https://www.rfc-editor.org/info/rfc9112/#section-3
+//!add more status codes https://www.rfc-editor.org/info/rfc9112/#section-3
 enum eStatusCode
 {
 	STATUS_OK = 200,

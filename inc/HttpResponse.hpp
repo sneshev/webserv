@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
-/*                                                        :::      ::::::::   */
-/*   HttpResponse.hpp                                   :+:      :+:    :+:   */
-/*                                                    +:+ +:+         +:+     */
-/*   By: yaepark <yaepark@student.codam.nl>         +#+  +:+       +#+        */
-/*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2026/11/16 16:18:25 by yaepark           #+#    #+#             */
-/*   Updated: 2026/11/24 14:03:21 by yaepark          ###   ########.fr       */
+/*                                                        ::::::::            */
+/*   HttpResponse.hpp                                   :+:    :+:            */
+/*                                                     +:+                    */
+/*   By: yaepark <yaepark@student.codam.nl>           +#+                     */
+/*                                                   +#+                      */
+/*   Created: 2026/11/16 16:18:25 by yaepark       #+#    #+#                 */
+/*   Updated: 2026/11/25 14:06:21 by yaepark       ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,28 +31,33 @@ class HttpResponse
 	void clearResponse();
 
 	public:
-	//constructor
 	HttpResponse();
 	HttpResponse(const HttpResponse& other);
 	HttpResponse& operator=(const HttpResponse& other);
 
-	//deconstructor
 	~HttpResponse();
 
-	//method functions
-	bool build(); //(1)
+	/* (1) Clears _completeResponse.
+	If isValid()==true, builds reponse
+	Returns true if building is successful.
+	If building  is not successful, clears _completeResponse and returns false */
+	bool build();
 
-	//status checkers
-	bool isValid() const; //checks enough fields are (validly) filled in to build a response
-	bool isBuilt() const; //checks if _completeReponse is not empty
 
-	//functions for headers
-	void addHeader(const PairString& header); //appends a header. allows dupes. clears _completeResponse
-	void setHeader(const PairString& header); // replaces existing header(s) of the same headerName with the supplied header. clears _completeResponse
-	void removeHeader(const std::string& headerName); //removes all occurance of a header. clears _completeResponse
-	VectorPairString searchHeaders(const std::string& headerName) const; //returns al matching headers. is case-insensitive
+	//checks enough fields are (validly) filled in to build a response
+	bool isValid() const;
+	//checks if _completeReponse is not empty
+	bool isBuilt() const;
 
-	//getters
+	//appends a header. allows dupes. clears _completeResponse
+	void addHeader(const PairString& header);
+	// replaces existing header(s) of the same headerName with the supplied header. clears _completeResponse
+	void setHeader(const PairString& header);
+	//removes all occurance of a header. clears _completeResponse
+	void removeHeader(const std::string& headerName);
+	//returns al matching headers. is case-insensitive
+	VectorPairString searchHeaders(const std::string& headerName) const;
+
 	const std::string& getHttpVersion() const;
 	int getStatusCode() const;
 	const std::string& getReasonPhrase() const;
@@ -60,16 +65,14 @@ class HttpResponse
 	const std::string& getBody() const;
 	const std::string& getCompleteResponse() const;
 
-	//setters
-	void setHttpVersion(const std::string& version); //also clears _completeResponse
-	void setStatusCode(int code); //also clears _completeResponse
-	void setReasonPhrase(const std::string& phrase);//also clears _completeResponse
-	void setBody(const std::string& body);//also clears _completeResponse
+	//also clears _completeResponse
+	void setHttpVersion(const std::string& version);
+	//also clears _completeResponse
+	void setStatusCode(int code);
+	//also clears _completeResponse
+	void setReasonPhrase(const std::string& phrase);
+	//also clears _completeResponse
+	void setBody(const std::string& body);
 
 };
-
 #endif
-/* (1) Clears _completeResponse.
-	If isValid()==true, builds reponse
-	Returns true if building is successful.
-	If building  is not successful, clears _completeResponse and returns false */

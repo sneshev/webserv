@@ -6,10 +6,11 @@
 #include "HttpResponse.hpp"
 #include "HttpHandler.hpp"
 
+/*
 void httpLoop()
 {
 	HttpRequestParser parser;
-	HttpHandler handler(/*config*/);
+	// HttpHandler handler(config);
 
 	//LOOP
 	{
@@ -36,11 +37,10 @@ void httpLoop()
 		}
 	}
 }
+*/
 
 
 int main()
 {
-
-	httpLoop();
 
 }
