@@ -9,9 +9,9 @@ Server::~Server()
 		close(_serverSocket);
 }
 
-void Server::setupSocket()
+void Server::createSocket()
 {
-	_serverSocket = socket(PF_INET, SOCK_STREAM, 0);
+	_serverSocket = socket(PF_INET, SOCK_STREAM | SOCK_NONBLOCK, 0);
 
 	if (_serverSocket == ERROR)
 		throw std::runtime_error("Couldn't create the server socket");
@@ -37,7 +37,7 @@ void Server::listenSocket()
 void Server::run()
 {}
 
-// in the future we should accept with poll as accept can block
+// ofcourse this function should only be called after poll
 void Server::acceptClient()
 {
 	int clientSocket;
@@ -47,6 +47,7 @@ void Server::acceptClient()
 		throw std::runtime_error("Failed to accept a client");
 
 	Client client(clientSocket);
+	_clients.push_back(client);
 }
 
 void Server::closeServer()
