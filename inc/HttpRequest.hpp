@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
-/*                                                        ::::::::            */
-/*   HttpRequest.hpp                                    :+:    :+:            */
-/*                                                     +:+                    */
-/*   By: yaepark <yaepark@student.codam.nl>           +#+                     */
-/*                                                   +#+                      */
-/*   Created: 2026/11/16 14:07:07 by yaepark       #+#    #+#                 */
-/*   Updated: 2026/11/25 14:59:17 by yaepark       ########   odam.nl         */
+/*                                                        :::      ::::::::   */
+/*   HttpRequest.hpp                                    :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: yaepark <yaepark@student.codam.nl>         +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2026/11/16 14:07:07 by yaepark           #+#    #+#             */
+/*   Updated: 2026/11/26 19:22:11 by yaepark          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,6 +29,7 @@ class HttpRequest
 	if there is a need to inspect indivual byte values use unsigned char and
 	access with operator[]. use .size() and NOT strlen()*/
 	std::string _body; //
+	void clearRequest();
 
 	public:
 	HttpRequest();
@@ -51,6 +52,8 @@ class HttpRequest
 
 	void addHeader(const PairString& singleHeader);
 	VectorPairString searchHeaders(const std::string& headerName) const;
+
+	void resetRequest();
 };
 
 #endif

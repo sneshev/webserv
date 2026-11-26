@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
-/*                                                        ::::::::            */
-/*   HttpResponse.hpp                                   :+:    :+:            */
-/*                                                     +:+                    */
-/*   By: yaepark <yaepark@student.codam.nl>           +#+                     */
-/*                                                   +#+                      */
-/*   Created: 2026/11/16 16:18:25 by yaepark       #+#    #+#                 */
-/*   Updated: 2026/11/25 14:06:21 by yaepark       ########   odam.nl         */
+/*                                                        :::      ::::::::   */
+/*   HttpResponse.hpp                                   :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: yaepark <yaepark@student.codam.nl>         +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2026/11/16 16:18:25 by yaepark           #+#    #+#             */
+/*   Updated: 2026/11/26 19:29:21 by yaepark          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,7 @@ class HttpResponse
 	VectorPairString _headers;
 	std::string _body;
 
-	std::string _completeResponse;
+	std::string _serializedResponse; //serialized response to be sent over the network. cleared when any field is changed
 
 	void clearResponse();
 
@@ -37,23 +37,22 @@ class HttpResponse
 
 	~HttpResponse();
 
-	/* (1) Clears _completeResponse.
-	If isValid()==true, builds reponse
-	Returns true if building is successful.
-	If building  is not successful, clears _completeResponse and returns false */
-	bool build();
+	/* (1) Clears _serializedResponse.
+	If isValid()==true, serializes the response into  std::string _serializedResponse.
+	If serialization is not successful, clears _serializedResponse and returns empty string */
+	const std::string& serialize();
 
 
 	//checks enough fields are (validly) filled in to build a response
 	bool isValid() const;
-	//checks if _completeReponse is not empty
+	//checks if _serializedResponse is not empty
 	bool isBuilt() const;
 
-	//appends a header. allows dupes. clears _completeResponse
+	//appends a header. allows dupes. clears _serializedResponse
 	void addHeader(const PairString& header);
-	// replaces existing header(s) of the same headerName with the supplied header. clears _completeResponse
+	// replaces existing header(s) of the same headerName with the supplied header. clears _serializedResponse
 	void setHeader(const PairString& header);
-	//removes all occurance of a header. clears _completeResponse
+	//removes all occurance of a header. clears _serializedResponse
 	void removeHeader(const std::string& headerName);
 	//returns al matching headers. is case-insensitive
 	VectorPairString searchHeaders(const std::string& headerName) const;
@@ -63,15 +62,14 @@ class HttpResponse
 	const std::string& getReasonPhrase() const;
 	const VectorPairString& getAllHeaders() const;
 	const std::string& getBody() const;
-	const std::string& getCompleteResponse() const;
 
-	//also clears _completeResponse
+	//also clears _serializedResponse
 	void setHttpVersion(const std::string& version);
-	//also clears _completeResponse
+	//also clears _serializedResponse
 	void setStatusCode(int code);
-	//also clears _completeResponse
+	//also clears _serializedResponse
 	void setReasonPhrase(const std::string& phrase);
-	//also clears _completeResponse
+	//also clears _serializedResponse
 	void setBody(const std::string& body);
 
 };

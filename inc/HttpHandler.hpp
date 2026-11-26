@@ -13,6 +13,8 @@
 #ifndef HTTP_HANDLER_HPP
 # define HTTP_HANDLER_HPP
 
+#  include "HttpTypes.hpp"
+
 class HttpRequest;
 class HttpResponse;
 class ServerConfig;
@@ -31,12 +33,13 @@ class HttpHandler
 
 	public:
 	HttpHandler(const ServerConfig& config);
-
 	~HttpHandler();
 
 	/* Handles request using one of the allowed methods: GET, POST, DELETE
 		Adds default headers, set connection-related headers, ensure response headers
-		are consistent, and builds the request and serializes it for sending*/
-	std::string handleRequest(const HttpRequest& request);
+		are consistent,  builds the request, and serializes it for sending
+		saves response to _response */
+	const HttpResponse& handleRequest(const HttpRequest& request);
+	const HttpResponse& createErrorResponse(int statusCode);
 };
 #endif

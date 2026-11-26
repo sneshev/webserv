@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
-/*                                                        ::::::::            */
-/*   HttpTypes.hpp                                      :+:    :+:            */
-/*                                                     +:+                    */
-/*   By: yaepark <yaepark@student.codam.nl>           +#+                     */
-/*                                                   +#+                      */
-/*   Created: 2026/11/23 15:31:54 by yaepark       #+#    #+#                 */
-/*   Updated: 2026/11/25 14:38:05 by yaepark       ########   odam.nl         */
+/*                                                        :::      ::::::::   */
+/*   HttpTypes.hpp                                      :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: yaepark <yaepark@student.codam.nl>         +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2026/11/23 15:31:54 by yaepark           #+#    #+#             */
+/*   Updated: 2026/11/26 18:32:18 by yaepark          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,9 +25,13 @@ enum eStatusCode
 	STATUS_UNAUTHORIZED_ERROR = 401,
 	STATUS_FORBIDDEN = 403,
 	STATUS_NOT_FOUND = 404,
+	STATUS_LENGTH_REQUIRED = 411,
+	STATUS_CONTENT_TOO_LARGE = 413,
 	STATUS_URI_TOO_LONG = 414,
+	STATUS_REQUEST_HEADER_FIELDS_TOO_LARGE = 431,
 	STATUS_INTERNAL_SERVER_ERROR = 500,
-	STATUS_NOT_IMPLEMENTED = 501
+	STATUS_NOT_IMPLEMENTED = 501,
+	STATUS_HTTP_VERSION_NOT_SUPPORTED = 505
 };
 
 using PairString = std::pair<std::string, std::string>;
