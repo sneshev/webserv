@@ -12,7 +12,7 @@ $(NAME): $(OBJS)
 	c++ $(FLAGS) $(OBJS) -o $(NAME)
 
 obj/%.o: src/%.cpp | obj
-	c++ $(FLAGS) -I inc -c $< -o $@
+	c++ $(FLAGS) -Iinc/config -Iinc/http -Iinc/networking -c $< -o $@
 
 obj:
 	@mkdir -p obj

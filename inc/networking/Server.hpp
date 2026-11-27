@@ -13,6 +13,7 @@ class Server
 	private:
 		int					_serverSocket;
 		std::vector<Client> _clients;
+		const ServerConfig &_config;
 
 	public:
 		Server();
