@@ -67,8 +67,8 @@ void Client::handleRequest()
 
 	if (_httpRequest.empty())
 		return;
-		
-	handleResponse();
+
+	createResponse();
 }
 
 void Client::handleResponse()
